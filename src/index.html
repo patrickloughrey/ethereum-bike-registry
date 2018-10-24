@@ -29,14 +29,65 @@
           <img src="./images/bicycle.png" >
         </div>
       </div>
-      <hr/>
+      <hr class="header"/>
       <br/>
+
+      <!-- Modal -->
+      <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <img src="./images/bicycle.png" >
+              <h3 class="modal-title">Register Your Bike!</h3>
+              <img src="./images/bicycle.png" >
+            </div>
+
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="input">What is the name of your bicycle?</label>
+                  <input type="text" class="form-control" id="name" placeholder="Larry">
+                </div>
+                <div class="form-group">
+                  <label for="input">What is the color of your bicycle?</label>
+                  <input type="text" class="form-control" id="color" placeholder="Pink with Red Flames">
+                </div>
+                <div class="form-group">
+                  <label for="input">How many wheels does your bicycle have?</label>
+                  <select id="wheels" class="form-control">
+                    <option selected>1</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>4</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="input">Does your bicycle have brakes in the rear, front, or both?</label>
+                  <input type="text" class="form-control" id="brakes" placeholder="Both">
+                </div>
+                <div class="form-group">
+                  <label for="input">Does your bicycle have a basket?</label>
+                  <input type="text" class="form-control" id="basket" placeholder="Both">
+                </div>
+              </form>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success registerBike">Register</button>
+              <button type="button" class="btn btn-dark btn-close" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div class="col-xs-12 col-sm-8 col-sm-push-2 box">
         <div class="card">
           <div class="card-body">
-            <a href="#" class="btn btn-success">Register</a>
-            <h5 class="card-title">Register Your Bicycle!</h5>
+            <a href="#" class="btn btn-success" data-toggle="modal" data-target="#registerModal">Register</a>
+            <h4 class="card-title">Register Your Bicycle!</h4>
+            <p class="name"> Name </p>
+            <p class="address"> Bike Address</p>
+            <p class="date"> Date Registered</p>
             <hr/>
 
           </div>
@@ -48,7 +99,7 @@
         <div class="card">
           <div class="card-body">
             <a href="#" class="btn btn-success">Transfer</a>
-            <h5 class="card-title">Transfer Your Bicycle to Someone Else!</h5>
+            <h4 class="card-title">Transfer Your Bicycle to Someone Else!</h4>
             <hr/>
 
           </div>
@@ -60,7 +111,7 @@
         <div class="card">
           <div class="card-body">
             <a href="#" class="btn btn-success">View Bike</a>
-            <h5 class="card-title">View Your Bicycles!</h5>
+            <h4 class="card-title">View Your Bicycles!</h4>
             <hr/>
 
           </div>
