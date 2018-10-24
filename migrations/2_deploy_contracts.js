@@ -1,4 +1,4 @@
-var BikeRegistry = artifacts.require("./BikeRegistry.sol");
+var BikeRegistry = artifacts.require("BikeRegistry");
 
 module.exports = function(deployer) {
   deployer.deploy(BikeRegistry);

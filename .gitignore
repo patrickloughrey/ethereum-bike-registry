@@ -1,9 +1,6 @@
 # dependencies
 /node_modules
 
-# production
-/build
-
 # miscellaneous
 .DS_Store
 .env.local

@@ -1,10 +1,3 @@
-/* Initialize variables */
-var name = $('#name');
-var color = $('#color');
-var wheels = $('#wheels');
-var brakes = $('#brakes');
-var basket = $('#basket');
-
 /* JavaScript Smart Contract logic */
 App = {
   web3Provider: null,
@@ -29,34 +22,40 @@ App = {
   initContract: function() {
     $.getJSON('BikeRegistry.json', function(data) {
       /* Get the necessary contract artifact file and instantiate it with truffle-contract */
-      var TutorialTokenArtifact = data;
-      App.contracts.TutorialToken = TruffleContract(TutorialTokenArtifact);
+      var BikeRegistryArtifact = data;
+      App.contracts.BikeRegistry = TruffleContract(BikeRegistryArtifact);
 
       /* Set the provider for our contract */
-      App.contracts.TutorialToken.setProvider(App.web3Provider);
+      App.contracts.BikeRegistry.setProvider(App.web3Provider);
+
+      return App.bindEvents();
+
     });
 
-    return App.bindEvents();
   },
 
   bindEvents: function() {
-    $(document).on('click', '#registerBike', App.registerBike);
+    $(document).on('click', '#registerBike', App.newBike);
   },
 
-  registerBike: function(event) {
+  newBike: function(event) {
     event.preventDefault();
 
     var BikeInstance;
 
     App.contracts.BikeRegistry.deployed().then(function(instance) {
-      console.log(instance);
+      // console.log(instance);
       BikeInstance = instance;
 
-      return BikeInstance.registerBike(name.val(), color.val(), wheels.val(), brakes.val(), basket.val());
+      return BikeInstance.registerBike($('#name').val(), $('#color').val(), $('#wheels').val(), $('#brakes').val(), $('#basket').val());
 
     }).then(function(result) {
-        console.log('Contract has been deployed!\n')
-    }
+        console.log(result);
+        console.log('Contract has been deployed!\n');
+
+    }).catch(function(err) {
+        console.log(err)
+    });
 
   }
 
