@@ -22,7 +22,7 @@ body {
   margin-top: 1%;
 }
 
-#registerBike {
+#registerBike, #transferBike {
   float: left;
 }
 
@@ -34,6 +34,9 @@ body {
   font: #619920;
 }
 
+/*********************************************/
+/*              Column Styling               */
+/*********************************************/
 .box {
   margin-bottom: 4%;
 }
@@ -90,14 +93,37 @@ hr {
   margin-right: 45%;
 }
 
-.name {
+.address {
   float:left;
   margin-left: 2.5%;
   font: boldest;
 }
 
-.address, .date {
+.name, .date {
   float: right;
   margin-left: 6%;
   margin-right: 4%;
+}
+
+/*********************************************/
+/*            Transaction Styling            */
+/*********************************************/
+.col-md-6, .offset-md-4 > p {
+  color: #619920;
+}
+
+.col-md-6 > p {
+  margin-left: 7%;
+}
+
+.offset-md-4 {
+  float: right;
+}
+
+.name-col-md-6 {
+  float: left;
+}
+
+.time-col-md-6 {
+  float: right;
 }
