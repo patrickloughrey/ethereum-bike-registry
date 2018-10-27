@@ -1,5 +1,5 @@
-/* Function to dynamically add transaction to DOM */
-function addRegisteredBike(obj, name) {
+/* Function to dynamically add registered bike to DOM */
+function addRegisteredBike(account, obj, name) {
 
     /* Close Modal */
     $('.btn-close').click();
@@ -10,11 +10,9 @@ function addRegisteredBike(obj, name) {
     var month = months[date.getMonth()];
     var year = date.getFullYear();
     var day = date.getDate();
-    var hour = date.getHours();
-    var minutes = date.getMinutes();
     var timeStamp = month + ", " + day + ", " + year;
 
-    contractAddr = obj.receipt.contractAddress;
+    ownerAddr = account;
     console.log(obj);
 
     /* Append to Transactions */
@@ -22,7 +20,7 @@ function addRegisteredBike(obj, name) {
     var column = $('<div>').addClass('col-md-6');
     var offset = $('<div>').addClass('col-md-4 offset-md-4');
 
-    addrVal = $('<p>').text(contractAddr);
+    addrVal = $('<p>').text(ownerAddr);
     nameVal = $('<p>').text(name).addClass('name-col-md-6');
     timeVal = $('<p>').text(timeStamp).addClass('time-col-md-6');
 
@@ -34,6 +32,9 @@ function addRegisteredBike(obj, name) {
     transactionsDiv.append(column);
     transactionsDiv.append(offset);
 }
+
+/* Function to dynamically add transferred ownership to DOM */
+
 
 /* JavaScript Smart Contract logic */
 App = {
@@ -73,6 +74,7 @@ App = {
 
   bindEvents: function() {
     $(document).on('click', '#registerBike', App.newBike);
+    $(document).on('click', '#transferBike', App.transferOwnership);
   },
 
   newBike: function(event) {
@@ -80,22 +82,60 @@ App = {
 
     var BikeInstance;
 
-    App.contracts.BikeRegistry.deployed().then(function(instance) {
-      console.log(instance);
-      BikeInstance = instance;
+    web3.eth.getAccounts(function(error, accounts) {
+      if (error) {
+        console.log(error);
+      }
 
-      return BikeInstance.registerBike($('#name').val(), $('#color').val(), $('#wheels').val(), $('#brakes').val(), $('#basket').val());
+      var account = accounts[0];
 
-    }).then(function(result) {
+      App.contracts.BikeRegistry.deployed().then(function(instance) {
+          console.log(instance);
+          BikeInstance = instance;
 
-        console.log('Contract has been deployed!\n');
+          return BikeInstance.registerBike($('#name').val(), $('#color').val(), $('#wheels').val(), $('#brakes').val(), $('#basket').val());
 
-        addRegisteredBike(result, $('#name').val());
+      }).then(function(result) {
 
-    }).catch(function(err) {
-        console.log(err)
+          console.log('Contract has been deployed!\n');
+
+          addRegisteredBike(account, result, $('#name').val());
+
+      }).catch(function(err) {
+          console.log(err.message)
+      });
+
     });
 
+  },
+
+  transferOwnership: function(event) {
+      event.preventDefault();
+
+      web3.eth.getAccounts(function(error, accounts) {
+          if (error) {
+            console.log(error);
+          }
+
+          var account = accounts[0];
+
+          App.contracts.BikeRegistry.deployed().then(function(instance) {
+              BikeInstance = instance;
+
+              var transferBikeID = $('#transferBikeID').val();
+              var ethAddress = $('#ethAddress').val();
+
+              return BikeInstance.transferOwnership(transferBikeID, ethAddress);
+
+          }).then(function(result) {
+              console.log('Ownership has been transferred!\n');
+
+              addTransferOwnership(account, transferBikeID, ethAddress);
+              
+          }).catch(function(err) {
+              console.log(err.message);
+          });
+      }
   }
 
 };

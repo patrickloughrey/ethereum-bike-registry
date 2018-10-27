@@ -1,7 +1,9 @@
-import 'openzeppelin-solidity/contracts/ownership/Ownable.sol';
 pragma solidity ^0.4.23;
 
-contract BikeRegistry is Ownable {
+contract BikeRegistry {
+
+    address public owner;
+    
     struct Bike {
         string name;
         string color;
@@ -34,6 +36,20 @@ contract BikeRegistry is Ownable {
         Bike memory bi = bikes[bikeID];
 
         return (bi.name, bi.color, bi.wheels, bi.brakes, bi.basket);
+    }
+
+    /* Function transfer ownership of bikeID */
+    function transferBike(uint bikeID, address newOwner) public returns (uint _bike, address _newOwner) {
+
+        require(newOwner != address(0));
+        require(bikeID < nextBikeNum);
+
+        owner = newOwner;
+
+        Bike storage bike = bikes[bikeID];
+
+        return (bikeID, newOwner);
+
     }
 
 

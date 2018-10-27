@@ -22,7 +22,7 @@ body {
   margin-top: 1%;
 }
 
-#registerBike, #transferBike {
+#registerBike, #transferBike, #viewBike {
   float: left;
 }
 
@@ -105,6 +105,24 @@ hr {
   margin-right: 4%;
 }
 
+.newOwner {
+  float:left;
+  margin-left: 2.5%;
+  font: boldest;
+}
+
+.bike {
+  float: left;
+  margin-left: 15%;
+  font: boldest;
+}
+
+.prevOwner {
+  float: right;
+  margin-left: 6%;
+  margin-right: 20%;
+}
+
 /*********************************************/
 /*            Transaction Styling            */
 /*********************************************/
@@ -118,6 +136,7 @@ hr {
 
 .offset-md-4 {
   float: right;
+  margin-right: 4%;
 }
 
 .name-col-md-6 {
