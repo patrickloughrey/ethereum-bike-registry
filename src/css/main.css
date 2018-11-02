@@ -112,16 +112,12 @@ hr {
 }
 
 .bike {
-  float: left;
-  margin-left: 15%;
+  float: right;
+  margin-left: 6%;
+  margin-right: 28%;
   font: boldest;
 }
 
-.prevOwner {
-  float: right;
-  margin-left: 6%;
-  margin-right: 20%;
-}
 
 /*********************************************/
 /*            Transaction Styling            */
@@ -145,4 +141,14 @@ hr {
 
 .time-col-md-6 {
   float: right;
+}
+
+.new-col-md-6 {
+  float: left;
+  margin-right: 5%;
+}
+
+.bike-col-md-6 {
+  float: left;
+  margin-left: 6%;
 }

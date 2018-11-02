@@ -20,9 +20,9 @@ function addRegisteredBike(account, obj, name) {
     var column = $('<div>').addClass('col-md-6');
     var offset = $('<div>').addClass('col-md-4 offset-md-4');
 
-    addrVal = $('<p>').text(ownerAddr);
-    nameVal = $('<p>').text(name).addClass('name-col-md-6');
-    timeVal = $('<p>').text(timeStamp).addClass('time-col-md-6');
+    var addrVal = $('<p>').text(ownerAddr);
+    var nameVal = $('<p>').text(name).addClass('name-col-md-6');
+    var timeVal = $('<p>').text(timeStamp).addClass('time-col-md-6');
 
     column.append(addrVal);
     offset.append(timeVal);
@@ -34,6 +34,28 @@ function addRegisteredBike(account, obj, name) {
 }
 
 /* Function to dynamically add transferred ownership to DOM */
+function addTransferOwnership(transferBikeID, ethAddress) {
+
+    /* Close Modal */
+    $('.btn-close').click();
+
+    /* Append to Transactions */
+    var transferTransactionsDiv = $('#transferTransaction');
+
+    var column = $('<div>').addClass('col-md-6');
+    var offset = $('<div>').addClass('col-md-4 offset-md-4');
+
+    var newOwner = $('<p>').text(ethAddress).addClass('new-col-md-6');
+    var bikeVal = $('<p>').text(transferBikeID).addClass('bike-col-md-6');
+
+    column.append(newOwner);
+    offset.append(bikeVal);
+
+    /* Append transaction details to div */
+    transferTransactionsDiv.append(column);
+    transferTransactionsDiv.append(offset);
+
+}
 
 
 /* JavaScript Smart Contract logic */
@@ -122,20 +144,17 @@ App = {
           App.contracts.BikeRegistry.deployed().then(function(instance) {
               BikeInstance = instance;
 
-              var transferBikeID = $('#transferBikeID').val();
-              var ethAddress = $('#ethAddress').val();
-
-              return BikeInstance.transferOwnership(transferBikeID, ethAddress);
+              return BikeInstance.transferBike($('#transferBikeID').val(), $('#ethAddress').val());
 
           }).then(function(result) {
               console.log('Ownership has been transferred!\n');
 
-              addTransferOwnership(account, transferBikeID, ethAddress);
-              
+              addTransferOwnership($('#transferBikeID').val(), $('#ethAddress').val());
+
           }).catch(function(err) {
               console.log(err.message);
           });
-      }
+      });
   }
 
 };
