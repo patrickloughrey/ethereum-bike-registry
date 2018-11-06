@@ -5,14 +5,20 @@ A bike registry decentralized application built on the Ethereum blockchain using
 ---
 
 ### Setting up the Environment
-In order to set up our project properly, we first need to install a Truffle Box has a starting off point.
+In order to set up our project properly, we first need to install a Truffle Box has a starting off point:
+
 1. Install Truffle:
-...`npm install -g truffle`
+
+`npm install -g truffle`
 2. Download the Truffle Box:
-...`truffle unbox tutorialtoken`
+
+`truffle unbox tutorialtoken`
 3. Compile the Smart Contract:
-...`truffle compile`
+
+`truffle compile`
 4. Deploy the Smart Contract:
-...`truffle migrate`
+
+`truffle migrate`
 5. Open the application in your browser
-...`npm run dev`
+
+`npm run dev`
