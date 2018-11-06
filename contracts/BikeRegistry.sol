@@ -12,13 +12,12 @@ contract BikeRegistry is Ownable {
     }
 
     mapping (uint => Bike) public id_to_bikes;
-    // one person can own many bikes
+    /* One person can own several bikes */
     mapping (uint => address) public id_to_addr;
 
     /*
       mapping (address => uint) public addr_to_id;
         in this mapping, one person owns one bike, and that is all
-
     */
 
     uint public nextBikeNum;
