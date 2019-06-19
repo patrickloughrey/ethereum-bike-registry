@@ -1,6 +1,6 @@
 ## Ethereum Bike Registry Dapp
 ### Overview
-A bike registry decentralized application built on the Ethereum blockchain using Solidity, Truffle, JavaScript, & Bootstrap. The bike registry Dapp will let a bike store register customer's bikes. This will consist of giving each of the bikes in their store a unique bike identification number. The Bike store can also transfer ownership of a bicycle to another valid Ethereum address.
+A bike registry Dapp built on the Ethereum blockchain using Solidity, Truffle, JavaScript, & Bootstrap. The bike registry Dapp will let a bike store register customer's bikes. This will consist of giving each of the bikes in their store a unique bike identification number. The Bike store can also transfer ownership of a bicycle to another valid Ethereum address.
 
 ---
 
