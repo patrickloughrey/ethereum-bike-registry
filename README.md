@@ -1,11 +1,11 @@
 ## Ethereum Bike Registry Dapp
 ### Overview
-A bike registry Dapp built on the Ethereum blockchain using Solidity, Truffle, JavaScript, & Bootstrap. The bike registry Dapp will let a bike store register customer's bikes. This will consist of giving each of the bikes in their store a unique bike identification number. The Bike store can also transfer ownership of a bicycle to another valid Ethereum address.
+A bike registry Dapp built on the Ethereum blockchain using Solidity, Truffle, JavaScript, & Bootstrap. The bike registry Dapp will let a bike store register customer's bikes. This will consist of giving each of the bikes in the store a unique bike identification number. The Bike store can also transfer ownership of a bicycle to another valid Ethereum address.
 
 ---
 
 ### Setting up the Environment
-In order to set up our project properly, we first need to install a Truffle Box has a starting off point:
+In order to set up the project properly, you first need to install a Truffle Box:
 
 1. Install Truffle:
 
